@@ -27,12 +27,10 @@ function generateCodeReport (html) {
 
 function analyseTags (html) {
   const tagsCountMap = countTags(html)
-  // const tagsProportionalityMap = calculateTagsProportionality(html)
   const tags = Object.keys(tagsCountMap)
   const tagsAnalysis = tags.map(tag => ({
     tag,
     count: tagsCountMap[tag],
-    // proportionality: tagsProportionalityMap
   }))
   return tagsAnalysis.sort(compareTagsMetrics('count'))
 }
@@ -99,27 +97,6 @@ function renderResults ({ proportionality, tags }) {
     <p><strong>Content:</strong> ${proportionality.content}%</p>
   `
 
-  // const tagsText = `
-  //   <h2>Tags:</h2>
-  //   <table>
-  //     <thead>
-  //       <tr>
-  //         <td><strong>Tag</strong></td>
-  //         <td><strong>Proportionality</strong></td>
-  //         <td><strong>Count</strong></td>
-  //       </tr>
-  //     </thead>
-  //     <tbody>
-  //       ${tags.map(({tag, count, contentPercent}) => `
-  //         <tr>
-  //           <td><strong>${tag}</strong></td>
-  //           <td>${contentPercent || '-'}%</td>
-  //           <td>${count}</td>
-  //         </tr>
-  //       `).join('\n')}
-  //     </tbody>
-  //   </table>
-  // `
   const tagsText = `
     <h2>Tags:</h2>
     <table>
@@ -130,7 +107,7 @@ function renderResults ({ proportionality, tags }) {
         </tr>
       </thead>
       <tbody>
-        ${tags.map(({tag, count, contentPercent}) => `
+        ${tags.map(({tag, count}) => `
           <tr>
             <td><strong>${tag}</strong></td>
             <td>${count}</td>
