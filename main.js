@@ -67,13 +67,48 @@ function countTags (html) {
 function calculateGeneralProportionality (html) {
   const temp = document.createElement('div')
   temp.innerHTML = html
+  let tags = temp.querySelectorAll("*");
+  let htmlTags = []
+  let conts = []
 
-  const formattedHtml = formatText(temp.innerHTML)
-  const content = formatText(temp.innerText)
+  const tagsCountMap = countTags(html)
+  const tagss = Object.keys(tagsCountMap)
+  console.log(`tags: ${tagss}`)
+  tags.forEach((tag)=>{
+    if(tag.tagName === 'SCRIPT' || tag.tagName === 'STYLE'){
+      console.log(`${tag}`.length)
+      htmlTags.push(tag)
+    } else {
+      let tempTag = document.createElement(`${tag.tagName}`)
+      console.log(tempTag)
+      htmlTags.push(tempTag)
+    }
+  })
 
-  const totalLength = formattedHtml.length
+  tags.forEach((tag)=>{
+    if(tag.tagName !== 'SCRIPT' && tag.tagName !== 'STYLE'){
+      conts.push(tag.innerHTML)
+    } 
+  })
+
+  let constsStr = ''
+  conts.forEach((cont)=>{
+    constsStr += cont
+  })
+
+  let codeStr = ''
+  htmlTags.forEach((tag)=>{
+    codeStr += tag
+  })
+
+console.log(htmlTags)
+
+  const formattedHtml = formatText(codeStr)
+  const content = formatText(constsStr)
+  
+  const totalLength = html.length
   const contentPercentage = getPercentage(content.length, totalLength)
-  const codePercentage = getPercentage(totalLength - content.length, totalLength)
+  const codePercentage = getPercentage(Number(html.length - content.length), totalLength)
 
   return {
     content: contentPercentage,
