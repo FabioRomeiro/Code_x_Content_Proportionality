@@ -31,20 +31,17 @@
   function getReport (html) {
     var doc = new DOMParser().parseFromString(html, "text/html");
   
-    allTags = doc.getElementsByTagName('*')
-    allTagsCount = allTags.length
+    const allTags = doc.getElementsByTagName('*')
   
     report = {}
   
     for (let index = 0; index < allTags.length; index++) {
-      const element = allTags[index];
-  
-      tagName = element.tagName.toLowerCase()
-      text = extractText(element)
-  
-      outerHtml = formatText(element.outerHTML)
-      innerHTML = formatText(element.innerHTML)
-      tagLength = outerHtml.length - innerHTML.length
+      const element = allTags[index];  
+      const tagName = element.tagName.toLowerCase()
+      const text = extractText(element)
+      const outerHtml = formatText(element.outerHTML)
+      const innerHTML = formatText(element.innerHTML)
+      const tagLength = outerHtml.length - innerHTML.length
   
       report[tagName] = {
         count: (report[tagName]?.count || 0) + 1,
@@ -57,10 +54,10 @@
   }
   
   function extractText(element) {
-    excludedElements = ['script', 'style']
+    const excludedElements = ['script', 'style']
     
     if (excludedElements.indexOf(element.tagName.toLowerCase()) === -1) {
-      text = '';
+      let text = '';
       for (var i = 0; i < element.childNodes.length; ++i)
         if (element.childNodes[i].nodeType === Node.TEXT_NODE)
           text += element.childNodes[i].textContent;
