@@ -17,4 +17,8 @@ With this calculator you can calculate this propotionality on a given code.
 
 Open the `index.html` file with your browser.
 
+Or use docker for local development:
+
+`docker-compose up`
+
 ¯\\\_(ツ)\_/¯
