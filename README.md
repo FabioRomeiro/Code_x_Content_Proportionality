@@ -21,4 +21,6 @@ Or use docker for local development:
 
 `docker-compose up`
 
-¯\\\_(ツ)\_/¯
+## Running unity tests
+
+`docker-compose up tests`

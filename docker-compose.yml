@@ -9,4 +9,9 @@ services:
       - 3000:3000
     volumes:
       - .:/app:consistent
-    command: browser-sync -f . -w -f index.html -f **.js -f **.css --no-open
+      - /app/node_modules
+    command: npm run dev
+  tests:
+    build:
+        context: .
+    command: npm run test

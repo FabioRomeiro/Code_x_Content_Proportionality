@@ -1,0 +1,29 @@
+{
+  "name": "code_x_content_proportionality",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "directories": {
+    "test": "tests"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.19.4",
+    "browser-sync": "^2.27.10",
+    "jest": "^29.2.2",
+    "jest-environment-jsdom": "^29.2.2"
+  },
+  "scripts": {
+    "dev": "browser-sync -f . -w -f index.html -f **.js -f **.css --no-open",
+    "test": "jest --verbose"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FabioRomeiro/Code_x_Content_Proportionality.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FabioRomeiro/Code_x_Content_Proportionality/issues"
+  },
+  "homepage": "https://github.com/FabioRomeiro/Code_x_Content_Proportionality#readme"
+}
