@@ -94,29 +94,45 @@ function getPercentage (value, total) {
 
 function renderResults ({ proportionality, report }) {
   const proportionalityText = `
-    <h2>General proportionality:</h2>
-    <p><strong>Code:</strong> ${proportionality.code}%</p>
-    <p><strong>Content:</strong> ${proportionality.content}%</p>
+    <div class="ccp-results__general">
+      <h2>General proportionality:</h2>
+      <table class="ccp-table">
+        <thead>
+          <tr>
+            <th><strong>Code</strong></th>
+            <th><strong>Content</strong></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>${proportionality.code}%</td>
+            <td>${proportionality.content}%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   `
 
   const tagsText = `
-    <h2>Tags:</h2>
-    <table>
-      <thead>
-        <tr>
-          <td><strong>Tag</strong></td>
-          <td><strong>Count</strong></td>
-        </tr>
-      </thead>
-      <tbody>
-        ${Object.entries(report).map(([tag, data]) => `
+    <div class="ccp-results__tags">
+      <h2>Tags:</h2>
+      <table class="ccp-table">
+        <thead>
           <tr>
-            <td><strong>${tag}</strong></td>
-            <td>${data.count}</td>
+            <th><strong>Tag</strong></th>
+            <th><strong>Count</strong></th>
           </tr>
-        `).join('\n')}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          ${Object.entries(report).map(([tag, data]) => `
+            <tr>
+              <td><strong>${tag}</strong></td>
+              <td>${data.count}</td>
+            </tr>
+          `).join('')}
+        </tbody>
+      </table>
+    </div>
   `
 
   document.getElementById('results').innerHTML = proportionalityText + tagsText
