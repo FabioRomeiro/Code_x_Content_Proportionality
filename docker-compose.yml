@@ -9,4 +9,4 @@ services:
       - 3000:3000
     volumes:
       - .:/app:consistent
-    command: browser-sync -f . -w -f index.html -f **.js -f **.css --no-open	
+    command: browser-sync -f . -w -f index.html -f **.js -f **.css --no-open
