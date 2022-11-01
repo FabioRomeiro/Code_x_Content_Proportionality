@@ -1,0 +1,26 @@
+:root {
+  --primary-color: #ffa600;
+  --primary-color-dark: #77510b;
+  --secondary-color: #ffffff;
+  --background-color: #2e2e2e;
+  --background-color-light: #383838;
+  --background-color-lighter: #464646;
+  --background-color-dark: #0a0a0a;
+}
+
+body {
+	background-color: var(--background-color);
+	color: var(--secondary-color);
+}
+
+body, button {
+	font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+h1 {
+	font-size: 34px;
+}
+
+p {
+	font-size: 14px;
+}
